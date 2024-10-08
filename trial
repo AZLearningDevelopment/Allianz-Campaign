@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shake and Reveal</title>
+    <style>
+        .shake {
+            animation: shake 0.3s;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(0); }
+            25% { transform: translate(-5px, 0); }
+            50% { transform: translate(5px, 0); }
+            75% { transform: translate(-5px, 0); }
+            100% { transform: translate(0); }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="revealButton">Shake to Reveal!</button>
+    <div id="revealContent" class="hidden">
+        <img src="https://i.postimg.cc/zXNvQgRn/Dyson-Hair-Dryer.jpg" alt="Surprise Content!" style="max-width: 100%;">
+    </div>
+
+    <script>
+        const button = document.getElementById('revealButton');
+        const content = document.getElementById('revealContent');
+
+        button.addEventListener('click', () => {
+            button.classList.add('shake');
+            content.classList.remove('hidden');
+            setTimeout(() => button.classList.remove('shake'), 500);
+        });
+    </script>
+</body>
+</html>
